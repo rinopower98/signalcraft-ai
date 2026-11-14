@@ -109,6 +109,7 @@
             <div class="source-summary"><div><strong>Identity</strong><span id="identitySource">Public professional sources</span><i id="identityStatus">Matched</i></div><div><strong>Business context</strong><span>Company + news</span><i id="activityStatus">Found</i></div><div><strong>Evidence</strong><span>Linked below</span><i id="signalCount">3 signals</i></div></div>
             <div class="research-findings"><p class="eyebrow">Research findings</p><ul id="searchResearch"></ul></div>
             <div class="why-now"><span>Why now</span><p id="searchWhy"></p></div>
+            <button class="secondary deep-dive-single" id="singleDeepDive">Deep dive on this prospect ✦</button>
           </article>
           <article class="panel instant-draft">
             <div class="composer-head"><div><span class="draft-badge">Curated email · unsent</span><strong>Built from the research beside it</strong></div><button class="icon-btn" id="searchCopy">Copy</button></div>
@@ -122,9 +123,23 @@
       </section>
 
       <section class="page" id="prospects">
-        <div class="page-head compact"><div><p class="eyebrow">Signal intelligence</p><h1>Prospects worth a real conversation.</h1><p>Ranked by account fit, buyer relevance, and recent evidence.</p></div><button class="primary">+ Add target account</button></div>
-        <div class="prospect-controls"><input id="search" type="search" placeholder="Search buyers or accounts"><div class="filter-set"><button class="active">All signals</button><button>Hiring</button><button>Leadership</button><button>Intent</button></div></div>
-        <div class="prospect-grid" id="prospectGrid"></div>
+        <div class="page-head compact"><div><p class="eyebrow">Prospect discovery</p><h1>Describe the buyer you need. Find the right people.</h1><p>Search broadly by what you sell, narrow by geography, then open a sourced deep dive on any prospect.</p></div><span class="live-source-pill">● Live public research</span></div>
+        <form class="prospect-search-panel panel" id="prospectSearchForm">
+          <label class="prospect-query">What product, service, or problem are you prospecting for?<textarea id="prospectProduct" rows="3" required maxlength="300" placeholder="Example: AI-powered sales outreach for regional industrial real estate firms"></textarea></label>
+          <div class="prospect-search-fields">
+            <label>Ideal buyer guidance<input id="prospectIdealBuyer" maxlength="240" placeholder="Optional: owners, revenue leaders, 50–500 employees"></label>
+            <label>Area or market<input id="prospectLocation" maxlength="160" placeholder="City, state, region, or country"></label>
+            <label>Search radius<select id="prospectRadius"><option value="0">Any distance</option><option value="25">Within 25 miles</option><option value="50" selected>Within 50 miles</option><option value="100">Within 100 miles</option><option value="250">Within 250 miles</option><option value="500">Within 500 miles</option><option value="1000">Within 1,000 miles</option></select></label>
+          </div>
+          <div class="prospect-search-footer"><p>Professional sources only. SignalCraft will not guess private contact details.</p><button class="primary" id="runProspectSearch" type="submit">Find relevant prospects ✦</button></div>
+        </form>
+        <div class="prospect-state panel" id="prospectEmpty"><div class="radar"><i></i><i></i><b>◎</b></div><h2>Build a market around your offering</h2><p>SignalCraft will identify likely decision-makers and champions, rank the fit, and show why each person belongs on the list.</p></div>
+        <div class="prospect-state panel" id="prospectLoading" hidden aria-live="polite"><div class="radar searching"><i></i><i></i><b>✦</b></div><h2>Mapping the market</h2><p>Finding relevant companies, professional roles, locations, and current business signals…</p></div>
+        <div class="prospect-state panel search-error" id="prospectError" hidden role="alert"><div class="error-mark">!</div><h2 id="prospectErrorTitle">Prospect search needs more detail</h2><p id="prospectErrorText"></p></div>
+        <div id="prospectResults" hidden>
+          <div class="prospect-results-head"><div><p class="eyebrow">Ranked matches</p><h2 id="prospectResultsTitle">Relevant prospects</h2><p id="prospectResultsSummary"></p></div><label>Filter results<input id="search" type="search" placeholder="Name, title, company, or location"></label></div>
+          <div class="prospect-grid" id="prospectGrid"></div>
+        </div>
       </section>
 
       <section class="page" id="studio">
@@ -168,6 +183,25 @@
       </section>
     </main>
   </div>
+  <dialog class="deep-dive-dialog" id="deepDiveDialog">
+    <form method="dialog"><button class="dialog-close" aria-label="Close deep dive">×</button></form>
+    <div class="deep-dive-loading" id="deepDiveLoading"><div class="radar searching"><i></i><i></i><b>✦</b></div><h2>Building the deep dive</h2><p>Verifying the person, company context, recent signals, and conversation angles…</p></div>
+    <div id="deepDiveError" class="deep-dive-error" hidden><div class="error-mark">!</div><h2>Deep dive could not be completed</h2><p id="deepDiveErrorText"></p><button class="secondary" id="closeDeepDiveError">Close</button></div>
+    <div id="deepDiveContent" hidden>
+      <div class="deep-dive-head"><div class="buyer-avatar blue" id="deepDiveAvatar">?</div><div><span class="draft-badge">Verified prospect deep dive</span><h2 id="deepDiveName"></h2><p id="deepDiveRole"></p></div><div class="deep-score"><strong id="deepDiveScore"></strong><span>research confidence</span></div></div>
+      <p class="deep-summary" id="deepDiveSummary"></p>
+      <div class="deep-dive-grid">
+        <section><p class="eyebrow">Why this prospect fits</p><ul id="deepDiveFit"></ul></section>
+        <section><p class="eyebrow">Likely priorities to validate</p><ul id="deepDivePriorities"></ul></section>
+        <section class="deep-signals"><p class="eyebrow">Recent sourced signals</p><ul id="deepDiveSignals"></ul></section>
+        <section><p class="eyebrow">Conversation angles</p><ul id="deepDiveAngles"></ul></section>
+        <section><p class="eyebrow">Questions worth asking</p><ul id="deepDiveQuestions"></ul></section>
+        <section><p class="eyebrow">Risks and unknowns</p><ul id="deepDiveRisks"></ul></section>
+      </div>
+      <div class="deep-email"><div><span class="draft-badge">Evidence-backed starter email</span><strong id="deepDiveSubject"></strong></div><p id="deepDiveMessage"></p></div>
+      <div class="action-row"><button class="secondary" id="closeDeepDive">Close</button><button class="primary" id="deepDiveOutreach">Use in outreach →</button></div>
+    </div>
+  </dialog>
   <div class="toast" id="toast" role="status"></div>
   <script src="app.js"></script>
   <script src="email.js"></script>

@@ -7,6 +7,6 @@
     "nodemailer": "^7.0.10"
   },
   "scripts": {
-    "check": "node --check api/research.js && node --check dist/app.js"
+    "check": "node --check api/research.js && node --check api/prospects.js && node --check api/gmail.js && node --check app.js && node --check email.js"
   }
 }
