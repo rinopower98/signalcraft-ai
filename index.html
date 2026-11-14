@@ -107,6 +107,7 @@
             <div class="result-kicker"><span id="searchMatchLabel">Verified match</span><strong id="searchScore">94% relevance</strong></div>
             <div class="result-person"><div class="buyer-avatar amber" id="searchAvatar">MJ</div><div><h2 id="searchName">Maya Johnson</h2><p id="searchRole">VP, Revenue Operations · Northstar Systems</p></div></div>
             <div class="source-summary"><div><strong>Identity</strong><span id="identitySource">Public professional sources</span><i id="identityStatus">Matched</i></div><div><strong>Business context</strong><span>Company + news</span><i id="activityStatus">Found</i></div><div><strong>Evidence</strong><span>Linked below</span><i id="signalCount">3 signals</i></div></div>
+            <div class="contact-email-panel" id="singleEmailPanel"><div><span>Verified work email</span><a id="singleEmailAddress">Not publicly listed</a><a class="email-source" id="singleEmailSource" target="_blank" rel="noopener noreferrer" hidden>View source ↗</a></div><button class="secondary" id="copySingleEmail" hidden>Copy email</button></div>
             <div class="research-findings"><p class="eyebrow">Research findings</p><ul id="searchResearch"></ul></div>
             <div class="why-now"><span>Why now</span><p id="searchWhy"></p></div>
             <button class="secondary deep-dive-single" id="singleDeepDive">Deep dive on this prospect ✦</button>
@@ -131,7 +132,7 @@
             <label>Area or market<input id="prospectLocation" maxlength="160" placeholder="City, state, region, or country"></label>
             <label>Search radius<select id="prospectRadius"><option value="0">Any distance</option><option value="25">Within 25 miles</option><option value="50" selected>Within 50 miles</option><option value="100">Within 100 miles</option><option value="250">Within 250 miles</option><option value="500">Within 500 miles</option><option value="1000">Within 1,000 miles</option></select></label>
           </div>
-          <div class="prospect-search-footer"><p>Professional sources only. SignalCraft will not guess private contact details.</p><button class="primary" id="runProspectSearch" type="submit">Find relevant prospects ✦</button></div>
+          <div class="prospect-search-footer"><p>Professional sources only. Work emails appear only when publicly listed and source-verified; SignalCraft never guesses them.</p><button class="primary" id="runProspectSearch" type="submit">Find relevant prospects ✦</button></div>
         </form>
         <div class="prospect-state panel" id="prospectEmpty"><div class="radar"><i></i><i></i><b>◎</b></div><h2>Build a market around your offering</h2><p>SignalCraft will identify likely decision-makers and champions, rank the fit, and show why each person belongs on the list.</p></div>
         <div class="prospect-state panel" id="prospectLoading" hidden aria-live="polite"><div class="radar searching"><i></i><i></i><b>✦</b></div><h2>Mapping the market</h2><p>Finding relevant companies, professional roles, locations, and current business signals…</p></div>
@@ -189,6 +190,7 @@
     <div id="deepDiveError" class="deep-dive-error" hidden><div class="error-mark">!</div><h2>Deep dive could not be completed</h2><p id="deepDiveErrorText"></p><button class="secondary" id="closeDeepDiveError">Close</button></div>
     <div id="deepDiveContent" hidden>
       <div class="deep-dive-head"><div class="buyer-avatar blue" id="deepDiveAvatar">?</div><div><span class="draft-badge">Verified prospect deep dive</span><h2 id="deepDiveName"></h2><p id="deepDiveRole"></p></div><div class="deep-score"><strong id="deepDiveScore"></strong><span>research confidence</span></div></div>
+      <div class="deep-contact" id="deepDiveContact"><div><span>Verified work email</span><a id="deepDiveEmailAddress">Not publicly listed</a><a id="deepDiveEmailSource" target="_blank" rel="noopener noreferrer" hidden>View source ↗</a></div><button class="secondary" id="copyDeepDiveEmail" hidden>Copy email</button></div>
       <p class="deep-summary" id="deepDiveSummary"></p>
       <div class="deep-dive-grid">
         <section><p class="eyebrow">Why this prospect fits</p><ul id="deepDiveFit"></ul></section>
