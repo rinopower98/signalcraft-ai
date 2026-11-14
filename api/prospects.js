@@ -26,6 +26,22 @@ const parseModelJson = (text) => {
   return JSON.parse(cleaned);
 };
 
+const sanitizeContactEmail = (contact) => {
+  const address = String(contact?.address || "").trim().toLowerCase();
+  const sourceUrl = String(contact?.source_url || "").trim();
+  const validAddress = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address);
+  const validSource = /^https:\/\//i.test(sourceUrl);
+  if (contact?.status !== "verified_public" || !validAddress || !validSource) {
+    return { address: "", status: "not_found", source_name: "", source_url: "" };
+  }
+  return {
+    address,
+    status: "verified_public",
+    source_name: String(contact?.source_name || "Public professional source").trim().slice(0, 160),
+    source_url: sourceUrl.slice(0, 1000),
+  };
+};
+
 const callOpenAI = async ({ instructions, input, maxOutputTokens }) => {
   const upstream = await fetch(OPENAI_URL, {
     method: "POST",
@@ -83,6 +99,7 @@ Return ONLY valid JSON with this exact shape:
       "location": "",
       "fit_score": 0,
       "confidence": 0,
+      "contact_email": {"address": "", "status": "not_found", "source_name": "", "source_url": ""},
       "why_fit": "",
       "area_match": "inside" | "nearby" | "remote" | "unverified",
       "signals": [{"claim": "", "source_name": "", "source_url": ""}]
@@ -94,6 +111,8 @@ Return ONLY valid JSON with this exact shape:
 Rules:
 - Return up to ${limit} real professionals who are plausible decision-makers, champions, or strong influencers for the offering.
 - Every person must be supported by at least one working public source URL that verifies identity, role, company, or a relevant business signal.
+- Look for a publicly listed work email for each person. Return it only if the exact address appears verbatim on an official company page or reputable professional directory with a working source URL. Otherwise use "not_found" and empty contact fields.
+- Never construct an email from a domain or naming convention. Never return personal email accounts or private contact details.
 - Prefer people with a clear role-to-problem connection and a timely company signal. Explain the fit in plain language.
 - Scores are 0-100 and must reflect evidence strength, not sales certainty.
 - Use only professional information. Never expose or infer personal addresses, personal phone numbers, private emails, family details, protected traits, or other sensitive personal data. Never guess an email address.
@@ -108,6 +127,10 @@ Rules:
       input: `Offering or problem: ${product}\nRequested geography: ${location || "No restriction"}\nRadius: ${radiusMiles || "Any"} miles`,
       maxOutputTokens: 4200,
     });
+    result.prospects = (result.prospects || []).map((person) => ({
+      ...person,
+      contact_email: sanitizeContactEmail(person.contact_email),
+    }));
     return json(res, 200, result);
   } catch (error) {
     console.error("Broad prospect search failed", error);
@@ -133,6 +156,7 @@ Return ONLY valid JSON with this exact shape:
 {
   "match_status": "verified" | "probable" | "ambiguous" | "not_found",
   "person": {"name": "", "title": "", "company": "", "location": "", "confidence": 0},
+  "contact_email": {"address": "", "status": "not_found", "source_name": "", "source_url": ""},
   "executive_summary": "",
   "fit_reasons": [""],
   "priorities": [""],
@@ -146,6 +170,8 @@ Return ONLY valid JSON with this exact shape:
 
 Rules:
 - Use 3 to 7 working public source URLs when a verified or probable match is found.
+- Look for a publicly listed work email. Return it only if the exact address appears verbatim on an official company page or reputable professional directory and cite that page. Otherwise use "not_found" with empty contact fields.
+- Never infer, pattern-match, or construct an email address. Never return personal email accounts or private contact details.
 - Clearly separate verified facts from reasonable sales hypotheses. Do not invent budgets, projects, pain points, intent, technologies, or reporting relationships.
 - Every recent signal must include a source. Fit reasons and outreach must be grounded in the returned evidence.
 - Use only professional information. Never expose or infer personal addresses, personal phone numbers, private emails, family details, protected traits, or sensitive personal data. Never guess an email address.
@@ -159,6 +185,7 @@ Rules:
       input: `Deep dive prospect: ${name}\nTitle: ${title || "Unknown"}\nCompany: ${company}\nProfessional location: ${location || "Unknown"}`,
       maxOutputTokens: 4800,
     });
+    result.contact_email = sanitizeContactEmail(result.contact_email);
     return json(res, 200, result);
   } catch (error) {
     console.error("Prospect deep dive failed", error);
