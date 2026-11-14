@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignalCraft AI</title>
+  <meta name="description" content="AI-powered buyer research, personalized outreach, and sales-time reinvestment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-search.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#command"><span class="brand-mark">S</span><span>SignalCraft</span></a>
+      <nav aria-label="Primary navigation">
+        <button class="nav-item active" data-page="command"><span>⌁</span>Command center</button>
+        <button class="nav-item" data-page="search-engine"><span>⌕</span>Buyer search</button>
+        <button class="nav-item" data-page="prospects"><span>◎</span>Prospects</button>
+        <button class="nav-item" data-page="studio"><span>✦</span>Outreach studio</button>
+        <button class="nav-item" data-page="reinvest"><span>◷</span>Time reinvestment</button>
+      </nav>
+      <div class="source-stack">
+        <p class="eyebrow">Signal sources</p>
+        <div class="source"><i class="dot zoom"></i>ZoomInfo <span>Demo</span></div>
+        <div class="source"><i class="dot linkedin"></i>LinkedIn <span>Demo</span></div>
+        <div class="source"><i class="dot web"></i>Web + social <span>Demo</span></div>
+        <p class="source-note">Prototype integrations use illustrative data.</p>
+      </div>
+      <div class="profile"><div class="avatar">LR</div><div><strong>Luke Rossi</strong><small>Account Executive</small></div><button aria-label="Profile options">•••</button></div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button class="menu" aria-label="Open menu">☰</button>
+        <div class="status"><span></span>AI research agent active</div>
+        <div class="top-actions"><button class="icon-btn" aria-label="Notifications">◌</button><button class="primary" data-open-studio>Draft outreach</button></div>
+      </header>
+
+      <section class="page active" id="command">
+        <div class="page-head">
+          <div><p class="eyebrow">Friday, November 14</p><h1>Make the next message matter.</h1><p>SignalCraft turns buyer signals into specific outreach, then gives the saved time back with a purpose.</p></div>
+          <div class="capacity-ring" aria-label="4.8 hours recovered this week"><div><strong>4.8h</strong><span>recovered</span></div></div>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric"><div class="metric-icon purple">✦</div><div><span>Drafts ready</span><strong>8</strong><small>3 need review today</small></div></article>
+          <article class="metric"><div class="metric-icon coral">↗</div><div><span>New buyer signals</span><strong>12</strong><small>Across 7 target accounts</small></div></article>
+          <article class="metric"><div class="metric-icon mint">✓</div><div><span>Approved this week</span><strong>21</strong><small>Every send reviewed by a rep</small></div></article>
+        </div>
+
+        <div class="two-col">
+          <article class="panel focus-panel">
+            <div class="panel-title"><div><p class="eyebrow">AI recommended action</p><h2>Reach out while the signal is fresh</h2></div><span class="fresh">18m ago</span></div>
+            <div class="buyer-card">
+              <div class="buyer-avatar amber">MJ</div>
+              <div class="buyer-main"><strong>Maya Johnson</strong><span>VP, Revenue Operations · Northstar Systems</span><div class="tags"><b>ICP match 94%</b><em>Expansion signal</em></div></div>
+              <div class="confidence"><span>Signal confidence</span><strong>High</strong></div>
+            </div>
+            <div class="signal-box">
+              <span class="signal-icon">↗</span>
+              <p><strong>Why now</strong> Northstar is hiring three sales operations roles and Maya recently shared a post about reducing ramp time across a growing sales team.</p>
+            </div>
+            <div class="evidence-row"><span>Evidence</span><button>ZoomInfo hiring trend</button><button>LinkedIn activity</button><button>Company careers page</button></div>
+            <div class="action-row"><button class="secondary" data-prospect="maya">View research</button><button class="primary" data-compose="maya">Create personalized draft →</button></div>
+          </article>
+
+          <article class="panel reinvest-mini">
+            <div class="panel-title"><div><p class="eyebrow">This week’s reinvestment</p><h2>288 minutes, assigned</h2></div><button class="text-btn" data-page-jump="reinvest">Adjust</button></div>
+            <div class="allocation"><div><span><i class="purple-bg"></i>Live discovery</span><strong>90m</strong></div><div class="bar"><i style="width:31.25%"></i></div></div>
+            <div class="allocation"><div><span><i class="orange-bg"></i>Stakeholder mapping</span><strong>78m</strong></div><div class="bar orange-bar"><i style="width:27.08%"></i></div></div>
+            <div class="allocation"><div><span><i class="blue-bg"></i>Account strategy</span><strong>72m</strong></div><div class="bar blue-bar"><i style="width:25%"></i></div></div>
+            <div class="allocation"><div><span><i class="green-bg"></i>Deal follow-through</span><strong>48m</strong></div><div class="bar green-bar"><i style="width:16.67%"></i></div></div>
+            <div class="reinvest-note"><span>4.8h</span><p><strong>Capacity has a job.</strong> The plan converts writing time into buyer-facing work and decision progress.</p></div>
+          </article>
+        </div>
+
+        <article class="panel queue-panel">
+          <div class="panel-title"><div><p class="eyebrow">Review queue</p><h2>Drafts waiting for your judgment</h2></div><button class="text-btn" data-page-jump="studio">Open studio</button></div>
+          <div class="queue-row"><div class="buyer-avatar blue">DC</div><div><strong>Daniel Cho</strong><span>CIO · Harbor Freight Analytics</span></div><p>Security modernization</p><span class="tone">Direct</span><button data-compose="daniel">Review</button></div>
+          <div class="queue-row"><div class="buyer-avatar pink">AR</div><div><strong>Amelia Ruiz</strong><span>Chief People Officer · Vela Health</span></div><p>Manager enablement</p><span class="tone">Warm</span><button data-compose="amelia">Review</button></div>
+          <div class="queue-row"><div class="buyer-avatar green">TM</div><div><strong>Thomas Miller</strong><span>COO · Vertex Components</span></div><p>Inventory visibility</p><span class="tone">Concise</span><button data-compose="thomas">Review</button></div>
+        </article>
+      </section>
+
+      <section class="page" id="search-engine">
+        <div class="page-head compact"><div><p class="eyebrow">Buyer search engine</p><h1>Find a person. Leave with a message.</h1><p>Search by buyer, company, or role. SignalCraft combines available B2B and public signals, then drafts outreach around what is actually relevant.</p></div></div>
+        <div class="search-hero">
+          <div class="search-box"><span>⌕</span><input id="peopleSearch" type="search" placeholder="Search Maya Johnson, Northstar Systems, VP Revenue Operations…"><button id="runPeopleSearch">Research buyer ✦</button></div>
+          <div class="search-hints"><span>Try a demo search</span><button data-demo-search="maya">Maya Johnson</button><button data-demo-search="daniel">Daniel Cho</button><button data-demo-search="amelia">Vela Health</button><button data-demo-search="thomas">COO</button></div>
+        </div>
+        <div class="search-state panel" id="searchEmpty">
+          <div class="radar"><i></i><i></i><b>⌕</b></div><h2>One search across the buyer’s business context</h2><p>SignalCraft checks contact and company data, professional activity, company news, hiring, and public web signals before writing a word.</p>
+        </div>
+        <div class="search-result-layout" id="searchResult" hidden>
+          <article class="panel person-result">
+            <div class="result-kicker"><span>Verified match</span><strong id="searchScore">94% relevance</strong></div>
+            <div class="result-person"><div class="buyer-avatar amber" id="searchAvatar">MJ</div><div><h2 id="searchName">Maya Johnson</h2><p id="searchRole">VP, Revenue Operations · Northstar Systems</p></div></div>
+            <div class="source-summary"><div><strong>Contact & company</strong><span>ZoomInfo</span><i>Matched</i></div><div><strong>Professional activity</strong><span>LinkedIn</span><i>Found</i></div><div><strong>News, hiring & web</strong><span>Public sources</span><i>3 signals</i></div></div>
+            <div class="research-findings"><p class="eyebrow">Research findings</p><ul id="searchResearch"></ul></div>
+            <div class="why-now"><span>Why now</span><p id="searchWhy"></p></div>
+          </article>
+          <article class="panel instant-draft">
+            <div class="composer-head"><div><span class="draft-badge">Curated email · unsent</span><strong>Built from the research beside it</strong></div><button class="icon-btn" id="searchCopy">Copy</button></div>
+            <label>Subject<input id="searchSubject"></label>
+            <label>Message<textarea id="searchMessage" rows="14"></textarea></label>
+            <div class="draft-controls"><label>Tone<select id="searchTone"><option value="natural">Natural and direct</option><option value="warm">Warm and conversational</option><option value="executive">Executive concise</option></select></label><button class="primary" id="searchRegenerate">Rewrite from evidence ✦</button></div>
+            <div class="inline-guard"><span>Human review required</span><p>Check the source claims, voice, and timing before this enters a sending workflow.</p></div>
+            <button class="approve full" id="moveToStudio">Open full review →</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="prospects">
+        <div class="page-head compact"><div><p class="eyebrow">Signal intelligence</p><h1>Prospects worth a real conversation.</h1><p>Ranked by account fit, buyer relevance, and recent evidence.</p></div><button class="primary">+ Add target account</button></div>
+        <div class="prospect-controls"><input id="search" type="search" placeholder="Search buyers or accounts"><div class="filter-set"><button class="active">All signals</button><button>Hiring</button><button>Leadership</button><button>Intent</button></div></div>
+        <div class="prospect-grid" id="prospectGrid"></div>
+      </section>
+
+      <section class="page" id="studio">
+        <div class="page-head compact"><div><p class="eyebrow">Outreach studio</p><h1>Start with evidence. Sound like yourself.</h1><p>The AI proposes. The salesperson decides what leaves the building.</p></div></div>
+        <div class="studio-layout">
+          <aside class="studio-sidebar">
+            <label>Buyer<select id="buyerSelect"><option value="maya">Maya Johnson · Northstar</option><option value="daniel">Daniel Cho · Harbor Freight</option><option value="amelia">Amelia Ruiz · Vela Health</option><option value="thomas">Thomas Miller · Vertex</option></select></label>
+            <div class="research-card"><p class="eyebrow">Research used</p><ul id="researchList"></ul></div>
+            <label>Writing style<select id="toneSelect"><option value="natural">Natural and direct</option><option value="warm">Warm and conversational</option><option value="executive">Executive concise</option></select></label>
+            <label>Call to action<select><option>15-minute conversation</option><option>Share a relevant resource</option><option>Ask one discovery question</option></select></label>
+            <button class="primary full" id="regenerate">Regenerate draft ✦</button>
+          </aside>
+          <article class="composer panel">
+            <div class="composer-head"><div><span class="draft-badge">AI draft · unsent</span><strong id="draftTitle">Maya Johnson at Northstar Systems</strong></div><div><button class="icon-btn" id="copyDraft">Copy</button></div></div>
+            <label>Subject<input id="subject" value=""></label>
+            <label>Message<textarea id="message" rows="13"></textarea></label>
+            <div class="quality-row"><span><i>✓</i>Specific trigger</span><span><i>✓</i>Role relevance</span><span><i>✓</i>No unsupported claims</span><span><i>✓</i>One clear ask</span></div>
+            <div class="approval-box"><label><input type="checkbox" id="evidenceCheck"> I verified the claims and sources used in this draft.</label><label><input type="checkbox" id="voiceCheck"> This sounds like something I would actually send.</label></div>
+            <div class="action-row"><button class="secondary" id="saveDraft">Save draft</button><button class="approve" id="approveDraft" disabled>Approve for send →</button></div>
+            <p class="send-note" id="sendNote">Approval is disabled until both human-review checks are complete.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="reinvest">
+        <div class="page-head compact"><div><p class="eyebrow">4.8-hour reinvestment plan</p><h1>Saved time only matters when it moves a deal.</h1><p>Allocate the case-reported 288 minutes to work that requires human judgment and buyer contact.</p></div><div class="minutes-total"><strong id="allocated">288</strong><span>/ 288 minutes assigned</span></div></div>
+        <div class="reinvest-layout">
+          <article class="panel planner">
+            <div class="planner-head"><h2>Weekly capacity plan</h2><span id="plannerStatus">Fully assigned</span></div>
+            <div id="plannerRows"></div>
+            <div class="planner-footer"><button class="secondary" id="resetPlan">Reset recommendation</button><button class="primary" id="savePlan">Save weekly plan</button></div>
+          </article>
+          <aside class="outcome-panel">
+            <p class="eyebrow">Human advantage</p><h2>What the AI cannot replace</h2>
+            <div class="outcome"><span>01</span><div><strong>Listen live</strong><p>Ask the follow-up question that only makes sense in the moment.</p></div></div>
+            <div class="outcome"><span>02</span><div><strong>Build consensus</strong><p>Understand the people, incentives, and friction behind a buying decision.</p></div></div>
+            <div class="outcome"><span>03</span><div><strong>Use judgment</strong><p>Decide when to advance, slow down, challenge, or walk away.</p></div></div>
+            <div class="outcome-proof"><strong>Success measure</strong><p>Track completed buyer-facing work, verified stakeholder coverage, and agreed next steps. Do not treat saved time alone as revenue.</p></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
