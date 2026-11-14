@@ -24,10 +24,10 @@
       </nav>
       <div class="source-stack">
         <p class="eyebrow">Signal sources</p>
-        <div class="source"><i class="dot zoom"></i>ZoomInfo <span>Demo</span></div>
-        <div class="source"><i class="dot linkedin"></i>LinkedIn <span>Demo</span></div>
-        <div class="source"><i class="dot web"></i>Web + social <span>Demo</span></div>
-        <p class="source-note">Prototype integrations use illustrative data.</p>
+        <div class="source"><i class="dot zoom"></i>ZoomInfo <span>Ready</span></div>
+        <div class="source"><i class="dot linkedin"></i>Professional web <span>Live</span></div>
+        <div class="source"><i class="dot web"></i>News + company sites <span>Live</span></div>
+        <p class="source-note">Live research uses public professional sources. ZoomInfo enrichment activates when licensed access is connected.</p>
       </div>
       <div class="profile"><div class="avatar">LR</div><div><strong>Luke Rossi</strong><small>Account Executive</small></div><button aria-label="Profile options">•••</button></div>
     </aside>
@@ -88,17 +88,24 @@
       <section class="page" id="search-engine">
         <div class="page-head compact"><div><p class="eyebrow">Buyer search engine</p><h1>Find a person. Leave with a message.</h1><p>Search by buyer, company, or role. SignalCraft combines available B2B and public signals, then drafts outreach around what is actually relevant.</p></div></div>
         <div class="search-hero">
-          <div class="search-box"><span>⌕</span><input id="peopleSearch" type="search" placeholder="Search Maya Johnson, Northstar Systems, VP Revenue Operations…"><button id="runPeopleSearch">Research buyer ✦</button></div>
+          <form class="search-box" id="peopleSearchForm"><span>⌕</span><input id="peopleSearch" type="search" autocomplete="off" required placeholder="Name + company, e.g. Satya Nadella at Microsoft"><button id="runPeopleSearch" type="submit">Research person ✦</button></form>
+          <div class="search-context"><label>What should the email accomplish?<input id="outreachGoal" value="Start a relevant business conversation" maxlength="240"></label></div>
           <div class="search-hints"><span>Try a demo search</span><button data-demo-search="maya">Maya Johnson</button><button data-demo-search="daniel">Daniel Cho</button><button data-demo-search="amelia">Vela Health</button><button data-demo-search="thomas">COO</button></div>
         </div>
         <div class="search-state panel" id="searchEmpty">
           <div class="radar"><i></i><i></i><b>⌕</b></div><h2>One search across the buyer’s business context</h2><p>SignalCraft checks contact and company data, professional activity, company news, hiring, and public web signals before writing a word.</p>
         </div>
+        <div class="search-state panel" id="searchLoading" hidden aria-live="polite">
+          <div class="radar searching"><i></i><i></i><b>✦</b></div><h2>Researching the person and company</h2><p id="searchLoadingText">Checking public professional sources and looking for a defensible reason to reach out…</p>
+        </div>
+        <div class="search-state panel search-error" id="searchError" hidden role="alert">
+          <div class="error-mark">!</div><h2 id="searchErrorTitle">We could not verify that person</h2><p id="searchErrorText">Add a company, title, or location to make the search more specific.</p>
+        </div>
         <div class="search-result-layout" id="searchResult" hidden>
           <article class="panel person-result">
-            <div class="result-kicker"><span>Verified match</span><strong id="searchScore">94% relevance</strong></div>
+            <div class="result-kicker"><span id="searchMatchLabel">Verified match</span><strong id="searchScore">94% relevance</strong></div>
             <div class="result-person"><div class="buyer-avatar amber" id="searchAvatar">MJ</div><div><h2 id="searchName">Maya Johnson</h2><p id="searchRole">VP, Revenue Operations · Northstar Systems</p></div></div>
-            <div class="source-summary"><div><strong>Contact & company</strong><span>ZoomInfo</span><i>Matched</i></div><div><strong>Professional activity</strong><span>LinkedIn</span><i>Found</i></div><div><strong>News, hiring & web</strong><span>Public sources</span><i>3 signals</i></div></div>
+            <div class="source-summary"><div><strong>Identity</strong><span id="identitySource">Public professional sources</span><i id="identityStatus">Matched</i></div><div><strong>Business context</strong><span>Company + news</span><i id="activityStatus">Found</i></div><div><strong>Evidence</strong><span>Linked below</span><i id="signalCount">3 signals</i></div></div>
             <div class="research-findings"><p class="eyebrow">Research findings</p><ul id="searchResearch"></ul></div>
             <div class="why-now"><span>Why now</span><p id="searchWhy"></p></div>
           </article>
